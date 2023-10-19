@@ -1,0 +1,17 @@
+.footer {
+    background-color: lightslategray;
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-size: 15px;
+    color: rgb(240, 247, 254);
+    flex-shrink: 0;
+}
+
+.footer-link {
+    color: rgb(240, 247, 254);
+}

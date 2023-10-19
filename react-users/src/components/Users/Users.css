@@ -1,0 +1,55 @@
+.users {
+    width: 30%;
+    min-width: 200px;
+}
+
+.user {
+    margin: 10px 0;
+    text-align: left;
+}
+
+.user_href {
+    text-decoration: none;
+    color: rgb(63, 89, 113);
+    opacity: 0.8;
+}
+
+.user_href:hover {
+    color: rgb(32, 55, 77);
+    opacity: 1;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.posts {
+    width: 70%;
+    padding-left: 10px;
+}
+
+.post {
+    border: 1px solid lightblue;
+    padding: 10px;
+    margin: 10px 0;
+    text-align: left;
+}
+
+.post__title {
+    font-weight: bolder;
+    color: rgb(32, 55, 77);
+}
+
+.post__body {
+    color: rgb(63, 89, 113);
+}
+
+.user_info {
+    margin-top: 20px;
+    text-align: left;
+    font-size: 18px;
+    width: 100%;
+}
