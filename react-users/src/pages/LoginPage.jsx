@@ -1,9 +1,14 @@
 import { Button, Text, Input, VStack, useToast } from '@chakra-ui/react'
 import { useState } from 'react';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
+// import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom';
+import { Api } from '../services/Api';
+import { useDispatch } from 'react-redux';
+import { saveUserAuthToStore } from '../store/reducers/userAuthReducer';
 
 export default function LoginPage() {
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
     const [email, setEmail] = useState(undefined)
     const [pwd, setPwd] = useState(undefined)
 
@@ -19,9 +24,7 @@ export default function LoginPage() {
             })
             return
         }
-        axios.post('http://localhost:3900/auth/login', {
-            email, pwd
-        }).then(res => {
+        Api.login({ email, pwd }).then(res => {
             if (res.status === 200 && res?.data && res.data.ok) {
                 toast({
                     title: 'Уведомление',
@@ -30,9 +33,8 @@ export default function LoginPage() {
                     duration: 9000,
                     isClosable: true,
                 })
-
-                // localStorage.setItem('token', res.data.token)
-                // localStorage.setItem('userData', JSON.stringify(res.data.user))
+                dispatch(saveUserAuthToStore({ payload: { user: res.data.user, loaded: true } }))
+                navigate('/')
             }
             else {
                 toast({

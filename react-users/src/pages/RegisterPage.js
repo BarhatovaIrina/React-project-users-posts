@@ -1,7 +1,8 @@
 import { Button, Text, Input, VStack, useToast } from '@chakra-ui/react'
 import { useState } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { Api } from '../services/Api';
 
 export default function RegisterPage() {
     const [email, setEmail] = useState(undefined)
@@ -21,9 +22,7 @@ export default function RegisterPage() {
             })
             return
         }
-        axios.post('http://localhost:3900/auth/reg', {
-            email, name, pwd
-        }).then(res => {
+        Api.registerUser({ email, name, pwd }).then(res => {
             if (res.status === 200 && res?.data) {
                 localStorage.setItem('token', res.data.token)
                 localStorage.setItem('userData', JSON.stringify(res.data.user))

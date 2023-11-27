@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     isLoading: false,
     users: [],
+    // user: {},
     userName: ''
 };
 
@@ -21,6 +22,7 @@ const usersSlice = createSlice({
             state.userName = state.users[index]
             console.log(state.userName)
         }
+
     },
 });
 

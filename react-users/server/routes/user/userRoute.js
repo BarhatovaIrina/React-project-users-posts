@@ -5,13 +5,14 @@ import jwt from 'jsonwebtoken';
 
 const router = express.Router();
 const prisma = new PrismaClient();
+const JWTSecretKey = 'secret_key'
 
 const authMiddleware = (req, res, next) => {
     const authHeader = req.headers.authorization
     if (!authHeader) res.sendStatus(401)
 
-    const token = authHeader.split(' ')[1] // убирает Bearer
-    jwt.verify(token, 'secret_key', (err, user) => {
+    const token = authHeader.split(' ')[1] // убирает 'Bearer'
+    jwt.verify(token, JWTSecretKey, (err, user) => {
         if (err) {
             return res.sendStatus(403)
         }
@@ -118,7 +119,7 @@ router.post('/reg', async (req, res) => {
                     pwd: hashedPwd
                 }
             })
-            let token = jwt.sign(createdUser, 'secret_key')
+            let token = jwt.sign(createdUser, JWTSecretKey)
             res.json({ "ok": true, token: token, user: createdUser })
         })
         prisma.$disconnect()
@@ -144,7 +145,10 @@ router.post('/login', async (req, res) => {
         })
         if (foundUser && Array.isArray(foundUser) && foundUser.length > 0) {
             await bcrypt.compare(pwd, foundUser[0].pwd, (err, result) => {
-                if (result) res.json({ 'ok': true, user: foundUser[0] })
+                if (result) {
+                    const token = jwt.sign(foundUser[0], JWTSecretKey)
+                    res.json({ 'ok': true, user: foundUser[0], token: token })
+                }
                 else res.json({ "ok": false, "errorMsg": err })
             })
         }
