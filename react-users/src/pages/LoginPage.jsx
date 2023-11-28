@@ -1,10 +1,10 @@
 import { Button, Text, Input, VStack, useToast } from '@chakra-ui/react'
 import { useState } from 'react';
-// import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { Api } from '../services/Api';
 import { useDispatch } from 'react-redux';
 import { saveUserAuthToStore } from '../store/reducers/userAuthReducer';
+// import { getUsers } from "../../store/reducers/userReducer";
 
 export default function LoginPage() {
     const dispatch = useDispatch()
@@ -33,7 +33,9 @@ export default function LoginPage() {
                     duration: 9000,
                     isClosable: true,
                 })
-                dispatch(saveUserAuthToStore({ payload: { user: res.data.user, loaded: true } }))
+                dispatch(saveUserAuthToStore({ user: res.data.user, loaded: true }))
+                Api.setValueToLocalStorage('token', res.data.token)
+                Api.setValueToLocalStorage('user', JSON.stringify(res.data.user))
                 navigate('/')
             }
             else {

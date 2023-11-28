@@ -6,7 +6,7 @@ const initialState = {
 };
 
 const userAuthSlice = createSlice({
-    name: 'userAuth',
+    name: 'user',
     initialState,
     reducers: {
         saveUserAuthToStore: (state, actions) => {

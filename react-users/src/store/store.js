@@ -7,7 +7,7 @@ const store = configureStore({
     reducer: {
         users: userReducer,
         posts: postReducer,
-        userAuth: userAuthReducer
+        user: userAuthReducer
     },
 });
 export default store

@@ -37,6 +37,34 @@ const authMiddleware = (req, res, next) => {
 router.get('/', authMiddleware, (req, res) => {
     res.json({ "ok": true, path: "auth", user: req.user })
 })
+
+router.get('/getuser', async (req, res) => {
+    const { userId } = req.query
+    // console.log(userId)
+    if (!userId) res.json({ 'ok': false, errorMsg: 'Не найдем id пользователя' })
+    let foundUser = await prisma.user.findMany({
+        select: {
+            id: true,
+            name: true,
+            email: true,
+            age: true,
+            city: true,
+            // posts: true,
+            // _count: {
+            //     posts: true
+            // }
+
+        },
+        where: {
+            id: typeof userId === 'string' ? Number(userId) : userId
+        }
+    }) || []
+    // console.log(foundUser)
+    if (foundUser && Array.isArray(foundUser) && foundUser.length > 0) {
+        res.json({ "ok": true, "user": foundUser })
+    }
+})
+
 /**
  * @openapi
  * /auth/reg:
@@ -101,7 +129,7 @@ router.get('/', authMiddleware, (req, res) => {
  */
 router.post('/reg', async (req, res) => {
     const { email, name, pwd, age, city } = req.body
-    console.log('server user')
+    // console.log('server user')
     try {
         let foundUser = await prisma.user.findMany({
             where: {
