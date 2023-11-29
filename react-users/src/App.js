@@ -14,6 +14,7 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import AccountPage from './pages/AccountPage';
 import ListData from './pages/ListData';
+import ApiPlaceholder from './pages/ApiPlaceholder';
 import { ChakraProvider } from '@chakra-ui/react'
 import { useDispatch } from 'react-redux';
 import { Api } from './services/Api';
@@ -35,10 +36,11 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/users/:id" element={<ListData />}></Route>
-
+          <Route path="/account/:id" element={<AccountPage />}></Route>
           <Route path="/login" element={<LoginPage />} ></Route>
           <Route path="/register" element={<RegisterPage />} ></Route>
-          <Route path="/account/:id" element={<AccountPage />}></Route>
+          <Route path="/apiplaceholder" element={<ApiPlaceholder />}></Route>
+
           <Route path="*" element={<Error />}></Route>
           {/* <Route path="/admin" element={ifAdmin(<Layout />)}>
             <Route index element={AdminPage} />

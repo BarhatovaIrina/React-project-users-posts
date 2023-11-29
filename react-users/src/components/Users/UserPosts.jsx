@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addPostsToStore } from "../../store/reducers/postReducer";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import './Users.css';
 import Loading from "../Loading/Loading";
 
@@ -41,7 +41,8 @@ export default function UserPosts() {
 
     return (
         <>
-            <div className="box posts">
+            <div className="posts">
+                <h2> </h2>
                 <h2 className="user_info"> Posts of {userName} </h2>
                 <div className='box '>
                     {

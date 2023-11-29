@@ -9,11 +9,9 @@ export default function Header() {
     return (
         <>
             <div className='header'>
-                <p>
-                    React-project (HTML, CSS, JS, REACT, API, REDUX TOOLKIT)
-                </p>
                 <nav>
                     <NavLink className="header-link" to="/">Главная</NavLink>
+                    <NavLink className="header-link" to="/apiplaceholder">API Placeholder</NavLink>
                     <NavLink className="header-link" to="/admin">Админка</NavLink>
                     {/* <NavLink className="nav-a" to="/table">Link 2</NavLink> */}
                 </nav>
