@@ -1,0 +1,15 @@
+.container {
+    margin: 20px auto;
+    width: 80%;
+    border: 1px solid lightgray;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.textarea {
+    background: rgb(240, 239, 239);
+    min-height: 30px;
+    max-height: 50px;
+}

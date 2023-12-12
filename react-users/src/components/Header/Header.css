@@ -1,0 +1,14 @@
+.header {
+    background-color: lightslategray;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+    color: rgb(240, 247, 254);
+}
+
+.header-link {
+    color: rgb(240, 247, 254);
+    margin-right: 15px;
+}
