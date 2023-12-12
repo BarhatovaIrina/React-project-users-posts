@@ -51,17 +51,13 @@ export default function LoginPage() {
     }
     return (
         <>
-            <div style={{
-                Width: 400,
-                margin: '0 auto',
-                padding: 20,
-
-            }}>
+            <div className='content' style={{ padding: '20px', justifyContent: 'center' }} >
                 <VStack gap={'20px'} >
                     <Input size='md' name='email' type='email' placeholder='email' onChange={(e) => setEmail(e.target.value)} />
                     <Input name='pwd' type='password' placeholder='password' onChange={(e) => setPwd(e.target.value)} />
                     <Button colorScheme='gray' onClick={() => handleToLogin()}> Авторизоваться </Button>
-                    <Text >Еще нет аккаунта? <Link to='/login'><Text color='GrayText'>Зарегистрироваться</Text></Link></Text>
+                    <Text >Еще нет аккаунта? </Text>
+                    <Text color='GrayText'><Link to='/register'>Зарегистрироваться</Link></Text>
                 </VStack>
             </div>
 

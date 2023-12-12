@@ -7,7 +7,7 @@ export default function User(props) {
         <>
             <div className='user'>
 
-                <Link className='user_href' to={'/users/' + id}>{name}, {email}</Link>
+                <Link className='user_href' to={'/apiplaceholder/users/' + id}>{name}, {email}</Link>
 
             </div>
         </>

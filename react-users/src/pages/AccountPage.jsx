@@ -6,7 +6,6 @@ import { HStack, VStack, Text, Card, CardHeader, CardBody } from "@chakra-ui/rea
 export default function AccountPage() {
     const param = useParams()
     const { id: userId } = param
-    console.log('ddd', userId)
     const [userInfo, setUserInfo] = useState(undefined)
 
     useEffect(() => {
@@ -14,16 +13,12 @@ export default function AccountPage() {
     }, [])
 
     const getUserData = async () => {
-        console.log("userId", userId)
         Api.getUserById(userId).then(res => {
             if (res.status === 200 && res?.data && res.data.ok && Array.isArray(res.data.user)) {
-                console.log("userId", res.data.user[0])
                 setUserInfo(res.data.user[0])
             }
         })
     }
-    // console.log(userInfo)
-    // const { user, isLoading: userIsLoaded } = useSelector((state) => state.user)
 
     return (
         <div className='content'>
@@ -34,7 +29,7 @@ export default function AccountPage() {
                     <Text>Count of posts: {userInfo._count.posts}</Text>
                 </VStack>
 
-                <HStack>
+                {/* <HStack>
                     {userInfo.posts.map((item) => (
                         <Card border={"1px"}>
                             <CardHeader>{item.post_title}</CardHeader>
@@ -42,7 +37,7 @@ export default function AccountPage() {
                         </Card>
                     ))
                     }
-                </HStack>
+                </HStack> */}
 
             </VStack>
             }

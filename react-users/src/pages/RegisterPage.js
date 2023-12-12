@@ -31,19 +31,20 @@ export default function RegisterPage() {
     }
     return (
         <>
-            <div style={{
-                Width: 400,
-                margin: '0 auto',
-                padding: 20,
+            <div className='content'
+                style={{
+                    justifyContent: 'center',
+                    padding: 20,
 
-            }}>
+                }}>
                 <VStack gap={'20px'} >
                     <Input size='md' name='email' type='email' placeholder='email' onChange={(e) => setEmail(e.target.value)} />
                     <Input name='name' type='text' placeholder='name' onChange={(e) => setName(e.target.value)} />
                     <Input name='pwd' type='password' placeholder='password' onChange={(e) => setPwd(e.target.value)} />
                     <Input name='age' type='text' placeholder='age' onChange={(e) => setAge(e.target.value)} />
                     <Button colorScheme='gray' onClick={() => handleToRegister()}> Зарегистрироваться </Button>
-                    <Text >Уже есть аккаунт? <Link to='/login'>Авторизоваться</Link></Text>
+                    <Text >Уже есть аккаунт? </Text>
+                    <Text><Link to='/login'>Авторизоваться</Link></Text>
                 </VStack>
             </div>
 

@@ -40,7 +40,7 @@ router.get('/', authMiddleware, (req, res) => {
 
 router.get('/getuser', async (req, res) => {
     const { userId } = req.query
-    console.log(userId)
+    // console.log(userId)
     if (!userId) res.json({ 'ok': false, errorMsg: 'Не найден id пользователя' })
     let foundUser = await prisma.user.findMany({
         select: {
@@ -67,7 +67,7 @@ router.get('/getuser', async (req, res) => {
             id: typeof userId === 'string' ? Number(userId) : userId
         }
     }) || []
-    console.log('f=', foundUser)
+    // console.log('f=', foundUser)
     if (foundUser && Array.isArray(foundUser)) {
         res.json({ "ok": true, "user": foundUser, loaded: true })
     }

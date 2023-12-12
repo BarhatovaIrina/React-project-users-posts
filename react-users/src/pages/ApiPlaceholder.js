@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import Users from "../components/Users/Users";
 
 export default function ApiPlaceholder() {

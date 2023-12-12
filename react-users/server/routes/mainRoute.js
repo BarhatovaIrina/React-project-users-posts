@@ -27,21 +27,4 @@ router.get('/post', async (req, res) => {
     }
 })
 
-router.post('/post/create', async (req, res) => {
-    const { post_title, post_body, user_id } = req.body
-    try {
-        let post = await prisma.post.create({
-            data: {
-                post_title: post_title,
-                post_body: post_body,
-                userId: typeof user_id === 'string' ? Number(user_id) : user_id
-            }
-        })
-        res.json({ "ok": true, "post": post })
-    }
-    catch (error) {
-        res.json({ "ok": false, "errorMsg": error })
-    }
-})
-
 export default router;

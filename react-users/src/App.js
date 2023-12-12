@@ -19,6 +19,9 @@ import { ChakraProvider } from '@chakra-ui/react'
 import { useDispatch } from 'react-redux';
 import { Api } from './services/Api';
 import { saveUserAuthToStore } from './store/reducers/userAuthReducer';
+import { PostPage } from './pages/PostPage';
+import { PostAllPage } from './pages/PostAllPage';
+import LogoutPage from './pages/Logout';
 
 function App() {
   const dispatch = useDispatch()
@@ -35,12 +38,14 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Home />}></Route>
-          <Route path="/users/:id" element={<ListData />}></Route>
+          <Route path="/apiplaceholder/users/:id" element={<ListData />}></Route>
           <Route path="/account/:id" element={<AccountPage />}></Route>
           <Route path="/login" element={<LoginPage />} ></Route>
+          <Route path="/logout" element={<LogoutPage />} ></Route>
           <Route path="/register" element={<RegisterPage />} ></Route>
           <Route path="/apiplaceholder" element={<ApiPlaceholder />}></Route>
-
+          <Route path="/post" element={<PostPage />}></Route>
+          <Route path="/post/all" element={<PostAllPage />}></Route>
           <Route path="*" element={<Error />}></Route>
           {/* <Route path="/admin" element={ifAdmin(<Layout />)}>
             <Route index element={AdminPage} />
