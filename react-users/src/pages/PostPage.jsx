@@ -18,12 +18,10 @@ export const PostPage = () => {
     }, [count_posts])
 
     const getPosts = async () => {
-        // console.log('user', (JSON.parse(user)).id)
         if (user) {
             Api.getPosts((JSON.parse(user)).id)
                 .then(res => {
                     if (res.status === 200 && res?.data.posts && res.data.ok) {
-                        // console.log('data')
                         dispatch(getPostsByUserData({ loaded: true, posts_user: res.data.posts, count_posts: res.data.posts.length }))
                     }
                 })
