@@ -16,7 +16,6 @@ export const PostAllPage = () => {
         Api.getPosts()
             .then(res => {
                 if (res.status === 200 && res?.data.posts && res.data.ok) {
-                    // console.log('all')
                     dispatch(getPostsData({ loaded: true, posts_all: res.data.posts }))
                 }
             })

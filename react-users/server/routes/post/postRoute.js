@@ -11,11 +11,9 @@ const prisma = new PrismaClient();
 
 router.get('/getposts', async (req, res) => {
     const { userId } = req.query
-    // console.log(userId)
     try {
         let _posts = []
         if (userId !== 'undefined') { // getPostsByUserData
-            // console.log('user')
             _posts = await prisma.post.findMany({
                 select: {
                     id: true,
@@ -35,7 +33,6 @@ router.get('/getposts', async (req, res) => {
                 }
             })
         } else {
-            // console.log('unde')
             _posts = await prisma.post.findMany({
                 select: {
                     id: true,
@@ -61,7 +58,6 @@ router.get('/getposts', async (req, res) => {
 
 router.post('/create', async (req, res) => {
     const { post_title, post_body, uid } = req.body
-    // console.log('create', post_title, post_body, uid)
     try {
         let _post = await prisma.post.create({
             data: {
